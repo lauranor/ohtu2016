@@ -1,4 +1,4 @@
-package ohtu.kivipaperisakset;
+package pelit;
 
 public class Tekoaly {
 

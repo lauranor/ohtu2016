@@ -1,22 +1,24 @@
-package ohtu.kivipaperisakset;
+package pelit;
 
 import java.util.Scanner;
+import ohtu.kivipaperisakset.Tuomari;
 
-public class KPSTekoaly {
+public class KPSPelaajaVsPelaaja implements Pelattavat{
 
-    private static final Scanner scanner = new Scanner(System.in);
-
+    private static Scanner scanner;
+    
+    public KPSPelaajaVsPelaaja(Scanner s) {
+        this.scanner = s;
+    }
+    
+    @Override
     public void pelaa() {
         Tuomari tuomari = new Tuomari();
-        Tekoaly tekoaly = new Tekoaly();
-
+        
         System.out.print("Ensimmäisen pelaajan siirto: ");
         String ekanSiirto = scanner.nextLine();
-        String tokanSiirto;
-
-        tokanSiirto = tekoaly.annaSiirto();
-        System.out.println("Tietokone valitsi: " + tokanSiirto);
-
+        System.out.print("Toisen pelaajan siirto: ");
+        String tokanSiirto = scanner.nextLine();
 
         while (onkoOkSiirto(ekanSiirto) && onkoOkSiirto(tokanSiirto)) {
             tuomari.kirjaaSiirto(ekanSiirto, tokanSiirto);
@@ -25,11 +27,9 @@ public class KPSTekoaly {
 
             System.out.print("Ensimmäisen pelaajan siirto: ");
             ekanSiirto = scanner.nextLine();
-
-            tokanSiirto = tekoaly.annaSiirto();
-            System.out.println("Tietokone valitsi: " + tokanSiirto);
-            tekoaly.asetaSiirto(ekanSiirto);
-
+            
+            System.out.print("Toisen pelaajan siirto: ");
+            tokanSiirto = scanner.nextLine();
         }
 
         System.out.println();
